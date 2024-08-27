@@ -13,7 +13,7 @@
 .container {
   gap: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
   width: 100vw;
 }

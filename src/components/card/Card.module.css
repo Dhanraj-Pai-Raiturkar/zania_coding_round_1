@@ -7,7 +7,9 @@
 
 .card_image {
   width: 50%;
-  height: 50%;
+  height: 27vh;
+  overflow: hidden;
   object-fit: cover;
   cursor: pointer;
+  padding: 1rem 0px;
 }
