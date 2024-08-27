@@ -1,6 +1,7 @@
-export default interface Data {
+export default interface DataInterface {
   type: string;
   title: string;
   position: number;
-  image?: string;
+  image: string;
+  moveCard: Function;
 }

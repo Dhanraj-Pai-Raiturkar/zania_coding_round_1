@@ -2,22 +2,31 @@ import "./App.css";
 import Data from "./static/data.json";
 import Card from "./components/card/Card";
 import DataInterface from "./interface/data";
-import Modal from "./components/modal/Modal";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [cards, setCards] = useState<any[]>(Data);
+  const moveCard = (dragIndex: number, dropIndex: number) => {
+    setCards((prev: DataInterface[]) => {
+      let temp;
+      temp = prev[dragIndex];
+      prev[dragIndex] = prev[dropIndex];
+      prev[dropIndex] = temp;
+      return [...prev];
+    });
+  };
   return (
     <div className="App">
-      {/* <Modal /> */}
       <div className="container">
-        {Data.map((item: DataInterface, index: number) => {
+        {cards.map((item: DataInterface, index: number) => {
           return (
-            <div className="col">
+            <div key={`card${index}`} className="col">
               <Card
-                key={`card${index}`}
                 title={item.title}
                 type={item.type}
-                position={item.position}
+                position={index}
                 image={item.image}
+                moveCard={moveCard}
               />
             </div>
           );
