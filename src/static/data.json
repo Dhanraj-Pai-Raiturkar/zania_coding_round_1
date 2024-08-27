@@ -1,7 +1,32 @@
 [
-  { "type": "bank-draft", "title": "Bank Draft", "position": 0 },
-  { "type": "bill-of-lading", "title": "Bill of Lading", "position": 1 },
-  { "type": "invoice", "title": "Invoice", "position": 2 },
-  { "type": "bank-draft-2", "title": "Bank Draft 2", "position": 3 },
-  { "type": "bill-of-lading-2", "title": "Bill of Lading 2", "position": 4 }
+  {
+    "type": "bank-draft",
+    "title": "Bank Draft",
+    "position": 0,
+    "image": "./cat1.gif"
+  },
+  {
+    "type": "bill-of-lading",
+    "title": "Bill of Lading",
+    "position": 1,
+    "image": "./cat2.gif"
+  },
+  {
+    "type": "invoice",
+    "title": "Invoice",
+    "position": 2,
+    "image": "./cat3.gif"
+  },
+  {
+    "type": "bank-draft-2",
+    "title": "Bank Draft 2",
+    "position": 3,
+    "image": "./cat4.gif"
+  },
+  {
+    "type": "bill-of-lading-2",
+    "title": "Bill of Lading 2",
+    "position": 4,
+    "image": "./cat5.gif"
+  }
 ]
