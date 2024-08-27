@@ -20,7 +20,6 @@ enableMocking().then(() => {
       <DndProvider backend={HTML5Backend}>
         <App />
       </DndProvider>
-      //{" "}
     </React.StrictMode>
   );
 });

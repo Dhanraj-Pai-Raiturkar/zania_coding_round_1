@@ -1,6 +1,6 @@
 import "./App.css";
 import Card from "./components/card/Card";
-import { useFetch } from "./hooks/useFetch";
+import { useFetch } from "./hooks/UseFetch";
 import DataInterface from "./interface/data";
 import { useEffect, useState } from "react";
 
@@ -23,7 +23,6 @@ function App() {
       : undefined;
     if (!localData) {
       fetchData();
-      // localStorage.localData = JSON.stringify(response);
     } else {
       setResponse(localData);
     }
@@ -31,8 +30,15 @@ function App() {
   useEffect(() => {
     localStorage.localData = JSON.stringify(response);
   }, [response]);
+  const handleReset = () => {
+    localStorage.removeItem("localData");
+    window.location.reload();
+  };
   return (
     <div className="App">
+      <button className="reset_button" onClick={handleReset}>
+        Reset
+      </button>
       <div className="container">
         {loading ? (
           <h2>loading...</h2>
