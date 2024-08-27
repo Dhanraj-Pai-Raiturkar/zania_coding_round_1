@@ -6,16 +6,24 @@ import reportWebVitals from "./reportWebVitals";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
-  // <React.StrictMode>
-  // </React.StrictMode>
-  <DndProvider backend={HTML5Backend}>
-    <App />
-  </DndProvider>
-);
+async function enableMocking() {
+  const { worker } = await import("./mocks/browser");
+  return worker.start();
+}
+
+enableMocking().then(() => {
+  const root = ReactDOM.createRoot(
+    document.getElementById("root") as HTMLElement
+  );
+  root.render(
+    <React.StrictMode>
+      <DndProvider backend={HTML5Backend}>
+        <App />
+      </DndProvider>
+      //{" "}
+    </React.StrictMode>
+  );
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
