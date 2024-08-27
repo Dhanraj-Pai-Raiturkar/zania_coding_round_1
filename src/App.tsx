@@ -1,6 +1,6 @@
 import "./App.css";
 import Card from "./components/card/Card";
-import { useFetch } from "./hooks/useFetch";
+import { useFetch } from "./hooks/UseFetch";
 import DataInterface from "./interface/data";
 import { useEffect, useState } from "react";
 
@@ -23,7 +23,6 @@ function App() {
       : undefined;
     if (!localData) {
       fetchData();
-      // localStorage.localData = JSON.stringify(response);
     } else {
       setResponse(localData);
     }
