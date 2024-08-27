@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import Classes from "./Modal.module.css";
 
@@ -10,9 +10,9 @@ interface ModalPropsInterface {
 const Modal: React.FC<ModalPropsInterface> = (props) => {
   const { hideModal } = props;
   const modalElement = document.getElementById("modal");
-  const handleHideModal = (event: KeyboardEvent) => {
-    console.log(event.key);
-    if (event.key === "Escape") hideModal();
+  const handleHideModal = (event: KeyboardEvent | React.SyntheticEvent) => {
+    if ((event as KeyboardEvent).key === "Escape") hideModal();
+    else if (!(event as KeyboardEvent).key) hideModal();
   };
   useEffect(() => {
     window.addEventListener("keyup", handleHideModal);
@@ -22,7 +22,15 @@ const Modal: React.FC<ModalPropsInterface> = (props) => {
   }, []);
   if (modalElement) {
     return ReactDOM.createPortal(
-      <div className={Classes.modal_container}>{props.children}</div>,
+      <>
+        <button
+          onClick={handleHideModal}
+          className={Classes.modal_close_button}
+        >
+          x
+        </button>
+        <div className={Classes.modal_container}>{props.children}</div>
+      </>,
       modalElement
     );
   } else {

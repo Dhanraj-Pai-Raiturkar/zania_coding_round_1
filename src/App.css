@@ -5,20 +5,33 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
 }
 
 .container {
   gap: 1rem;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
 }
 
 .col {
   flex: 1 1 1;
-  width: 28.5%;
+  width: 26.5%;
+}
+
+.reset_button {
+  background-color: rgb(95, 129, 51);
+  border: 0;
+  width: 12%;
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1rem 0px;
+  cursor: pointer;
 }
