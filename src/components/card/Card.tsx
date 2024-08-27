@@ -30,10 +30,8 @@ const Card: React.FC<DataInterface> = (props) => {
     }),
   });
 
-  const drag_ = drag(ref);
-  const drop_ = drop(ref);
-  console.log(drag_, drop_);
-
+  drag(ref);
+  drop(ref);
   return (
     <>
       <div
