@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Zania Coding Round 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
+This webapp, built with ReactJS and MSW server to simulate REST API integration, makes an initial GET API call to load cards on the landing screen. The data from this first call is cached in the browser, allowing subsequent refreshes to retrieve the cached data instead of making another API call. Users can preview card thumbnails by clicking on them, which opens a modal with the image centered on the screen. The modal can be closed by pressing the escape key or clicking the close button. The app also features drag-and-drop functionality for reordering cards. A reset button at the top center of the screen clears the cached data and reloads the page, triggering a fresh API call to retrieve the latest data.
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+## Folder Structure
+#### src/components
+This directory contains all reusable custom components, each housed in its own subdirectory. Typically, each subdirectory includes the component file along with its corresponding CSS file.
+#### src/hooks
+This directory contains all custom hooks, designed to separate business logic from the view components.
+#### src/interface
+This directory contains all interfaces that define object types.
+#### src/mocks
+This directory contains files related to REST API mock calls and local server configuration.
+#### src/static
+This directory contains all static files.
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## React Portal
+This webapp features a reusable modal component that can render any component within it, serving as a wrapper for its child components. Built on the portal concept from the react-dom library, it efficiently handles the display of modals.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
 
-### `npm test`
+## Drag and Drop
+This webapp utilizes react-dnd to implement drag-and-drop functionality. The card component in the project is both draggable and droppable.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
-### `npm run build`
+## Custom Hook
+This project includes a custom hook called useFetch, designed for making REST API calls. Currently, it handles unauthorized GET requests, but it can be further generalized and optimized to support various types of REST API integrations. The hook takes a URL as an argument and returns the following data:
+1. loading - A boolean value that is set to true when an API call is awaiting a response.
+2. response - This variable holds the response returned by the API call.
+3. setResponse - This is a reference to a state update function.
+4. fetchData - This is a reference to the function responsible for making the API call and can be invoked as needed throughout the component lifecycle.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Libraries
+Following are the external libraries used in the webapp:
+1. @dnd-kit/core
+2. react-dnd
+3. react-dnd-html5-backend
+4. msw
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## References
+1. https://react-dnd.github.io/react-dnd/about
+2. https://mswjs.io/docs/getting-started
