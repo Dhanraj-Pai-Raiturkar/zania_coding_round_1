@@ -9,6 +9,8 @@ npm install
 npm start
 ```
 
+<br/>
+
 ## About
 This webapp, built with ReactJS and MSW server to simulate REST API integration, makes an initial GET API call to load cards on the landing screen. The data from this first call is cached in the browser, allowing subsequent refreshes to retrieve the cached data instead of making another API call. Users can preview card thumbnails by clicking on them, which opens a modal with the image centered on the screen. The modal can be closed by pressing the escape key or clicking the close button. The app also features drag-and-drop functionality for reordering cards. A reset button at the top center of the screen clears the cached data and reloads the page, triggering a fresh API call to retrieve the latest data.
 
