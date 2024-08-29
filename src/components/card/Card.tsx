@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import DataInterface from "../../interface/data";
 import Classes from "./Card.module.css";
 import Modal from "../modal/Modal";
 import ImagePreview from "../imagePreview/ImagePreview";
-import { useDrag, useDrop } from "react-dnd";
 
 const Card: React.FC<DataInterface> = (props) => {
   const { title } = props;

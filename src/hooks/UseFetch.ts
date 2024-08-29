@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DataInterface from "../interface/data";
 import { reorder } from "../utils/listUtilities";
 
@@ -7,7 +7,7 @@ export const useFetch = (url: string) => {
     ? JSON.parse(localStorage.localData)
     : [];
   const [loading, setLoading] = useState<boolean>(false);
-  const [response, setResponse] = useState<any[]>(localData);
+  const [response, setResponse] = useState<DataInterface[]>(localData);
   const fetchData = async () => {
     try {
       setLoading(true);
