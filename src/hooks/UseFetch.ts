@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DataInterface from "../interface/data";
+import { reorder } from "../utils/listUtilities";
 
 export const useFetch = (url: string) => {
   const localData = localStorage?.localData
@@ -21,5 +22,12 @@ export const useFetch = (url: string) => {
       setLoading(false);
     }
   };
-  return { loading, response, setResponse, fetchData };
+  const moveCard = (dragIndex: number, dropIndex: number) => {
+    if (dragIndex !== dropIndex) {
+      setResponse((prev: DataInterface[]) => [
+        ...reorder(prev, dragIndex, dropIndex),
+      ]);
+    }
+  };
+  return { loading, response, setResponse, moveCard, fetchData };
 };
