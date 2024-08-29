@@ -3,5 +3,4 @@ export default interface DataInterface {
   title: string;
   position: number;
   image: string;
-  moveCard: Function;
 }

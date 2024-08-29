@@ -2,21 +2,13 @@ import "./App.css";
 import Card from "./components/card/Card";
 import { useFetch } from "./hooks/UseFetch";
 import DataInterface from "./interface/data";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ListManager } from "react-beautiful-dnd-grid";
 import { reorder } from "./utils/listUtilities";
 
 function App() {
   const url = "http://localhost:3000/cats";
-  const { loading, response, setResponse, fetchData } = useFetch(url);
-
-  const moveCard = (dragIndex: number, dropIndex: number) => {
-    if (dragIndex !== dropIndex) {
-      setResponse((prev: DataInterface[]) => [
-        ...reorder(response, dragIndex, dropIndex),
-      ]);
-    }
-  };
+  const { response, setResponse, moveCard, fetchData } = useFetch(url);
   useEffect(() => {
     const localData = localStorage.localData
       ? JSON.parse(localStorage.localData)
@@ -50,7 +42,6 @@ function App() {
               type={item.type}
               position={item.position}
               image={item.image}
-              moveCard={moveCard}
             />
           </div>
         )}
