@@ -30,12 +30,12 @@ const Card: React.FC<DataInterface> = (props) => {
     }),
   });
 
-  drag(ref);
-  drop(ref);
+  // drag(ref);
+  // drop(ref);
   return (
     <>
       <div
-        ref={ref}
+        // ref={ref}
         style={{ opacity: isDragging ? 0.5 : 1 }}
         className={Classes.card_container}
       >

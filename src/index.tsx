@@ -16,11 +16,11 @@ enableMocking().then(() => {
     document.getElementById("root") as HTMLElement
   );
   root.render(
-    <React.StrictMode>
-      <DndProvider backend={HTML5Backend}>
-        <App />
-      </DndProvider>
-    </React.StrictMode>
+    // <React.StrictMode>
+    // </React.StrictMode>
+    <DndProvider backend={HTML5Backend}>
+      <App />
+    </DndProvider>
   );
 });
 
