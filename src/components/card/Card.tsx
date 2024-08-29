@@ -16,7 +16,7 @@ const Card: React.FC<DataInterface> = (props) => {
     accept: ItemType,
     drop: (item: DataInterface) => {
       if (item.position !== position) {
-        moveCard(item.position, position);
+        // moveCard(item.position, position);
         item.position = position;
       }
     },

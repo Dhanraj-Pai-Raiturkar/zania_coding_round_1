@@ -1,9 +1,10 @@
 .card_container {
   border: 2px solid grey;
-  width: 100%;
+  width: 20rem;
   height: 100%;
   border-radius: 12px;
   cursor: grab;
+  margin: 1rem;
 }
 
 .card_image {

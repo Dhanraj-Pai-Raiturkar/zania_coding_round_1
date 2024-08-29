@@ -3,19 +3,19 @@ import Card from "./components/card/Card";
 import { useFetch } from "./hooks/UseFetch";
 import DataInterface from "./interface/data";
 import { useEffect, useState } from "react";
+import { ListManager } from "react-beautiful-dnd-grid";
+import { reorder } from "./utils/listUtilities";
 
 function App() {
   const url = "http://localhost:3000/cats";
   const { loading, response, setResponse, fetchData } = useFetch(url);
+
   const moveCard = (dragIndex: number, dropIndex: number) => {
-    setResponse((prev: DataInterface[]) => {
-      let temp;
-      temp = prev[dragIndex];
-      prev[dragIndex] = prev[dropIndex];
-      prev[dropIndex] = temp;
-      localStorage.localData = JSON.stringify(prev);
-      return [...prev];
-    });
+    if (dragIndex !== dropIndex) {
+      setResponse((prev: DataInterface[]) => [
+        ...reorder(response, dragIndex, dropIndex),
+      ]);
+    }
   };
   useEffect(() => {
     const localData = localStorage.localData
@@ -39,25 +39,23 @@ function App() {
       <button className="reset_button" onClick={handleReset}>
         Reset
       </button>
-      <div className="container">
-        {loading ? (
-          <h2>loading...</h2>
-        ) : (
-          response.map((item: DataInterface, index: number) => {
-            return (
-              <div key={`card${index}`} className="col">
-                <Card
-                  title={item.title}
-                  type={item.type}
-                  position={index}
-                  image={item.image}
-                  moveCard={moveCard}
-                />
-              </div>
-            );
-          })
+      <ListManager
+        items={response}
+        direction="horizontal"
+        maxItems={3}
+        render={(item: DataInterface) => (
+          <div key={`card${item.position}`} className="col">
+            <Card
+              title={item.title}
+              type={item.type}
+              position={item.position}
+              image={item.image}
+              moveCard={moveCard}
+            />
+          </div>
         )}
-      </div>
+        onDragEnd={moveCard}
+      />
     </div>
   );
 }
